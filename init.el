@@ -13,9 +13,6 @@
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
 
-;; Add line numbers
-(global-relative-line-numbers-mode)
-
 ;; turn off menu and toolbar
 (menu-bar-mode 1)
 (tool-bar-mode -1)
@@ -52,7 +49,10 @@
         (package-refresh-contents))
 
 ;; Assuming you wish to install and "magit"
-(ensure-package-installed 'fiplr 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'ack)
+(ensure-package-installed 'fiplr 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'ack 'evil-surround)
+
+;; Add line numbers
+(global-relative-line-numbers-mode)
 
 (require 'fill-column-indicator)
 (add-hook 'python-mode-hook (lambda ()
@@ -88,7 +88,6 @@
 (yas-global-mode 1)
 
 ;; Surround text plugin
-(load-file "~/.emacs.d/evil-surround.el")
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
