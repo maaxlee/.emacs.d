@@ -49,7 +49,7 @@
         (package-refresh-contents))
 
 ;; Assuming you wish to install and "magit"
-(ensure-package-installed 'fiplr 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'ack 'evil-surround)
+(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround)
 
 ;; Add line numbers
 (global-relative-line-numbers-mode)
