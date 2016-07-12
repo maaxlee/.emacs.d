@@ -12,6 +12,7 @@
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
+(setq-default truncate-lines t)
 
 ;; turn off menu and toolbar
 (menu-bar-mode 1)
@@ -49,7 +50,16 @@
         (package-refresh-contents))
 
 ;; Assuming you wish to install and "magit"
-(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround)
+(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile)
+
+(projectile-global-mode)
+(setq projectile-globally-ignored-files
+	  (append projectile-globally-ignored-files '("*.txt"
+												  "*.log"
+												  "*.xml"
+												  "*.html"
+														)))
+
 
 ;; Add line numbers
 (global-relative-line-numbers-mode)
@@ -126,4 +136,3 @@
 ;; Flycheck to check python code
 (package-install 'flycheck)
 (global-flycheck-mode)
-
