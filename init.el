@@ -52,13 +52,13 @@
 ;; Assuming you wish to install and "magit"
 (ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile)
 
+;;Enable projecttile plugin
 (projectile-global-mode)
 (setq projectile-globally-ignored-files
-	  (append projectile-globally-ignored-files '("*.txt"
-												  "*.log"
-												  "*.xml"
-												  "*.html"
-														)))
+	  (append projectile-globally-ignored-files '("*.txt" "*.log" "*.xml" "*.html")))
+(global-unset-key (kbd "C-s"))
+(global-set-key (kbd "C-s g") 'projectile-grep)
+(global-set-key (kbd "C-s f") 'projectile-find-file)
 
 
 ;; Add line numbers
@@ -75,10 +75,6 @@
 ;; load evil mode
 (require 'evil)
 (evil-mode t)
-
-;; ACK
-(require 'ack)
-(global-set-key (kbd "M-s s") 'ack)
 
 ;; list of buffers by F2
 (require 'bs)
@@ -111,9 +107,6 @@
      ;; (define-key yas-keymap (kbd "TAB") nil)
      (define-key yas-keymap (kbd "<backtab>") 'yas-next-field-or-maybe-expand)))
 
-;; Fuzzy search like ctrl-p in vim
-(global-set-key (kbd "C-s") 'fiplr-find-file)
-
 ;; RObot Framework mode
 (load-file "~/.emacs.d/robot-mode.el")
 (add-to-list 'auto-mode-alist '("\\.robot\\'" . robot-mode))
@@ -121,17 +114,6 @@
 ;; PYTHON section
 (add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'ac-anaconda-setup)
-(setq
- python-shell-interpreter "ipython"
- python-shell-interpreter-args "--colors=Linux --profile=default"
- python-shell-prompt-regexp "In \\[[0-9]+\\]: "
- python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
- python-shell-completion-setup-code
- "from IPython.core.completerlib import module_completion"
- python-shell-completion-module-string-code
- "';'.join(module_completion('''%s'''))\n"
- python-shell-completion-string-code
- "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 ;; Flycheck to check python code
 (package-install 'flycheck)
