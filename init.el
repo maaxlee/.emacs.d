@@ -27,6 +27,9 @@
 (global-set-key (kbd "<f9>") 'other-window)
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region)
 
+;; set a default font
+(set-default-font "Ubuntu Mono-12")
+
 ;;colour scheme (download manually)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme/")
 (load-theme 'atom-one-dark t)
@@ -50,7 +53,11 @@
         (package-refresh-contents))
 
 ;; Assuming you wish to install and "magit"
-(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile)
+(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile 'yaml-mode)
+
+;; Add yaml support
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
 ;;Enable projecttile plugin
 (projectile-global-mode)
@@ -110,6 +117,7 @@
 ;; RObot Framework mode
 (load-file "~/.emacs.d/robot-mode.el")
 (add-to-list 'auto-mode-alist '("\\.robot\\'" . robot-mode))
+(add-hook 'robot-mode-hook 'auto-complete-mode)
 
 ;; PYTHON section
 (add-hook 'python-mode-hook 'anaconda-mode)
