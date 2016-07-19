@@ -7,6 +7,7 @@
 
 (setq package-enable-at-startup nil)
 (package-initialize)
+(global-hl-line-mode)
 ;;(package-list-packages)
 
 (setq make-backup-files         nil) ; Don't want any backup files
