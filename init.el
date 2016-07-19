@@ -13,6 +13,7 @@
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
 (setq-default truncate-lines t)
+(global-hl-line-mode)
 
 ;; turn off menu and toolbar
 (menu-bar-mode 1)
@@ -53,7 +54,7 @@
         (package-refresh-contents))
 
 ;; Assuming you wish to install and "magit"
-(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile 'yaml-mode 'flx-ido)
+(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile 'yaml-mode 'flx-ido 'company-anaconda)
 
 ;; fixed ido for better frojecile support
 (require 'flx-ido)
@@ -88,6 +89,7 @@
 
 ;; allow to use c-u for page up in evil mode, need to add befo evil init
 (setq evil-want-C-u-scroll t)
+
 ;; load evil mode
 (require 'evil)
 (evil-mode t)
@@ -123,14 +125,22 @@
      ;; (define-key yas-keymap (kbd "TAB") nil)
      (define-key yas-keymap (kbd "<backtab>") 'yas-next-field-or-maybe-expand)))
 
-;; RObot Framework mode
+;; Robot Framework mode
 (load-file "~/.emacs.d/robot-mode.el")
 (add-to-list 'auto-mode-alist '("\\.robot\\'" . robot-mode))
 (add-hook 'robot-mode-hook 'auto-complete-mode)
 
 ;; PYTHON section
 (add-hook 'python-mode-hook 'anaconda-mode)
-(add-hook 'python-mode-hook 'ac-anaconda-setup)
+(add-hook 'python-mode-hook 'company-mode)
+;;Company backend anaconda
+(eval-after-load "company"
+ '(add-to-list 'company-backends 'company-anaconda))
+(eval-after-load 'company
+  '(progn
+     (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+     (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)))
+(setq company-idle-delay 0)
 
 ;; Flycheck to check python code
 (package-install 'flycheck)
