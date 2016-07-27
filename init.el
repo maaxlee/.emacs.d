@@ -171,3 +171,10 @@
 ;; clone repository to .emacs.d
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport 't)
+(setq ropemacs-autoimport-modules '("os" "shutil" "re"))
+(global-set-key (kbd "C-c C-i") 'rope-auto-import)
+
+;; ipython as python interpreter
+(setq python-shell-interpreter "ipython"
+       python-shell-interpreter-args "-i")
