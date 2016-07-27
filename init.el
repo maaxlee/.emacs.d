@@ -20,6 +20,11 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-message t)
 
+;; Highlight pairs
+(setq show-paren-delay 0)           ; how long to wait?
+(show-paren-mode t)                 ; turn paren-mode on
+(setq show-paren-style 'parenthesis) ; alternatives are 'parenthesis' and 'mixed'
+
 ;; auto close bracket insertion.
 (electric-pair-mode 1)
 (push '(?\' . ?\') electric-pair-pairs)      ; Automatically pair single-quotes
