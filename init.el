@@ -150,3 +150,24 @@
 ;; Flycheck to check python code
 (package-install 'flycheck)
 (global-flycheck-mode)
+
+;; pymacs - need to be installed manually
+;; ainstall python-rope
+;; clone Pymacs, clone ropemacs
+;; git clone https://github.com/pinard/Pymacs.git
+;; sudo pip install -e Pymacs
+;; python setup.py build
+;; python setup.py install
+
+(add-to-list 'load-path "~/.emacs.d/pymacs")
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs")
+
+;; ropemacs
+;; clone repository to .emacs.d
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
