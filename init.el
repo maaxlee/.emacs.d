@@ -20,6 +20,9 @@
 (tool-bar-mode -1)
 (setq inhibit-startup-message t)
 
+;; Delete trailing whitespaces  before exit
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Highlight pairs
 (setq show-paren-delay 0)           ; how long to wait?
 (show-paren-mode t)                 ; turn paren-mode on
@@ -31,7 +34,7 @@
 
 ;; Key remapping
 (global-set-key (kbd "<f9>") 'other-window)
-(global-set-key (kbd "M-/") 'comment-or-uncomment-region)
+(global-set-key (kbd "M-]") 'comment-or-uncomment-region)
 
 ;; set a default font
 (set-default-font "Ubuntu Mono-12")
