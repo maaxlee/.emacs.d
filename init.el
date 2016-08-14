@@ -4,6 +4,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -62,7 +63,7 @@
         (package-refresh-contents))
 
 ;; Assuming you wish to install and "magit"
-(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile 'yaml-mode 'flx-ido 'company-anaconda)
+(ensure-package-installed 'evil 'sr-speedbar 'anaconda-mode 'ac-anaconda 'relative-line-numbers 'flycheck 'yasnippet 'fill-column-indicator 'powerline-evil 'evil-surround 'projectile 'yaml-mode 'flx-ido 'company-anaconda 'pymacs)
 
 ;; fixed ido for better frojecile support
 (require 'flx-ido)

@@ -1,0 +1,21 @@
+Installation section of Pymacs manual is fairly straightforward — don't be afraid to refer to it if unsure. Below are the steps to install Pymacs in Emacs 24. First, in shell, run:
+
+sudo pip install rope ropemacs
+After that in Emacs install Elisp side of Pymacs by adding Marmalade repository and then running package-install pymacs. As of February 2014 you can't install Pymacs via pip, therefore:
+
+git clone http://github.com/pinard/pymacs
+cd pymacs
+make check
+sudo make install
+make check ensures the prerequisites. sudo make install puts Pymacs module in Python local modules path, usually /usr/local/lib/python2.7/dist-packages/. People generally frown upon make install, because if you lose the Makefile, it can become hard to cleanly uninstall. But you shouldn't fear it, as pip uses the same directory, so pip uninstall pymacs will work.
+
+In ~/.emacs.d/init.el put:
+
+;; Pymacs
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs")
+Evaluate this with eval-region and try running Python expressions with pymacs-eval. You're good to go.
